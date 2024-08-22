@@ -1,1 +1,14 @@
-<h1> ONE Movy </h1>
+
+<h1><%= @list.name %></h1>
+
+<ul>
+  <% @list.bookmarks.each do |bookmark| %>
+    <li>
+      <%= bookmark.movie.title %> - <%= bookmark.comment %>
+      <%= link_to "Delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure?" } %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Add a movie", new_list_bookmark_path(@list) %>
+<%= link_to "Back to all lists", lists_path %>
