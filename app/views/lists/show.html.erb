@@ -1,14 +1,18 @@
 
-<h1><%= @list.name %></h1>
+<div class="container mt-5">
+  <h1><%= @list.name %></h1>
 
-<ul>
-  <% @list.bookmarks.each do |bookmark| %>
-    <li>
-      <%= bookmark.movie.title %> - <%= bookmark.comment %>
-      <%= link_to "Delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure?" } %>
-    </li>
-  <% end %>
-</ul>
+  <ul class="list-group">
+    <% @list.bookmarks.each do |bookmark| %>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <span>
+          <strong><%= bookmark.movie.title %></strong> - <%= bookmark.comment %>
+        </span>
+        <%= link_to "Delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+      </li>
+    <% end %>
+  </ul>
 
-<%= link_to "Add a movie", new_list_bookmark_path(@list) %>
-<%= link_to "Back to all lists", lists_path %>
+  <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-primary mt-3" %>
+  <%= link_to "Back to all lists", lists_path, class: "btn btn-secondary mt-3" %>
+</div>

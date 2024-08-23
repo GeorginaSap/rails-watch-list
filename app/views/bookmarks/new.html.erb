@@ -1,17 +1,7 @@
-<h1>Add a Movie to <%= @list.name %></h1>
+<div class="container mt-5">
+  <h1>Add a Movie to <%= @list.name %></h1>
 
-<%= form_with model: [@list, @bookmark], local: true do |form| %>
-  <div>
-    <%= form.label :movie_id, "Choose a movie" %>
-    <%= form.collection_select :movie_id, Movie.all, :id, :title %>
-  </div>
-  <div>
-    <%= form.label :comment %>
-    <%= form.text_area :comment %>
-  </div>
-  <div>
-    <%= form.submit "Add Movie" %>
-  </div>
-<% end %>
+  <%= render 'form' %>
 
-<%= link_to "Back to list", list_path(@list) %>
+  <%= link_to "Back to list", list_path(@list), class: "btn btn-secondary mt-3" %>
+</div>
